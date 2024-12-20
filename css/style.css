@@ -1,57 +1,76 @@
-.iframe-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 비율 */
-    height: 0;
-    overflow: hidden;
+@font-face {
+    font-family: 'Comico-Regular';
+    src: url('../fonts/Comico-Regular.woff2') format('woff2'),
+         url('../fonts/Comico-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
 }
 
-iframe {
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(180deg, #f9fdfe, #edeade, #a4aed5);
+}
+
+.section {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.5));
+}
+
+.section:last-child::after {
+    display: none;
+}
+
+.iframe-container, .image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /*16:9비율*/
+    height: 0;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+iframe, .image-container img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
 }
 
-.image-container { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    width: 100%; 
-    padding-bottom: 100%; /* 정방형 비율 */ 
-    height: 0; 
-    overflow: hidden; 
-    position: relative; 
-} 
-
-.image-container img { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; /* 이미지가 컨테이너를 채우도록 */ 
-    transition: opacity 0.3s ease; /* 투명도 전환 효과 */
+.image-container img:hover {
+    opacity: 0.7; /* 투명도 조절 */
 }
 
-.image-container .image-caption {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-    color: white;
-    padding: 5px;
-    text-align: center;
-    opacity: 0; /* 초기 상태에서 숨김 */
-    transition: opacity 0.3s ease; /* 투명도 전환 효과 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    aspect-ratio: 1;
+    margin: 10px 0;
+    background: #f5f5f5;
+    border-radius: 10px;
 }
-
-.image-container:hover img {
-    opacity: 0.7; /* 마우스 오버 시 이미지 투명도 */
-}
-
-.image-container:hover .image-caption {
-    opacity: 1; /* 마우스 오버 시 설명
