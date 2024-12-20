@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiple Embedded Content</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="/style/style.css">
     <style>
         
+        @font-face { 
+            font-family: 'Comico-Regular'; 
+            src: url('../fonts/Comico-Regular.woff2') format('woff2'), 
+                 url('../fonts/Comico-Regular.woff') format('woff'); 
+                 font-weight: 400; 
+                 font-display: swap; 
+                 font-style: normal; 
+        }
         
         body {
             margin: 0;
@@ -49,14 +56,21 @@
             overflow: hidden;
             margin: 20px auto; /* 간격 추가 */
         }
+        /* 유튜브 임베드 비율 */
 
-        iframe {
+        iframe, .image-container img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none; /* 경계선 제거 */
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-container img:hover {
+            opacity: 0.7; /* 투명도 조절 */
         }
 
         .image-container {
@@ -68,8 +82,11 @@
             height: 0;
             overflow: hidden;
             position: relative;
+            aspect-ratio: 1;
             margin: 5px; /* 사진 사이 간격 추가 */
+            border-radius: 10px;
         }
+         /* 3섹션 이미지 설정 */
 
         .image-container img {
             position: absolute;
@@ -80,32 +97,33 @@
             object-fit: cover; /* 이미지가 컨테이너를 채우도록 */
             transition: opacity 0.3s ease; /* 투명도 전환 효과 */
         }
+          /* 마우스 이미지 위로 위치할시 투명도 조절 */
     </style>
 </head>
 <body>
     <div class="section">
         <div class="image-container">
-            <a href="http://127.0.0.1:5500/index2.html" target="_blank">
+            <a href="http://https://github.com/austn0122/index2.html" target="_blank">
                 <img src="images/고래는 물에서숨쉬지 않는다.png" alt="고래는 물에서 숨쉬지 않는다">
             </a>
         </div>
         <div class="image-container">
-            <a href="http://127.0.0.1:5500/index3.html" target="_blank">
+            <a href="http://https://github.com/austn0122/index3.html" target="_blank">
                 <img src="images/이방인.png" alt="이방인">
             </a>
         </div>
         <div class="image-container">
-            <a href="http://127.0.0.1:5500/index4.html" target="_blank">
+            <a href="http://https://github.com/austn0122/index4.html" target="_blank">
                 <img src="images/카라마조프가의 형제들.png" alt="카라마조프가의 형제들">
             </a>
         </div>    
         <div class="image-container">
-            <a href="http://127.0.0.1:5500/index5.html" target="_blank">
+            <a href="http://https://github.com/austn0122/index5.html" target="_blank">
                 <img src="images/UX:UI의 심리학 법칙.png" alt="UX:UI의 심리학 법칙">
             </a>
         </div>   
     </div>
-    
+    <!-- 독서 섹션 3 -->
 
     <div class="section">
         <div class="image-container">
@@ -154,6 +172,8 @@
             </iframe>
         </div>
     </div>
+<!-- 유튜브 섹션 3 -->
+
     <div class="section">
         <h2>playlist🎧</h2>
         <div class="iframe-container">
@@ -187,5 +207,6 @@
             </iframe>
         </div>
     </div>
+<!-- 스포티파이 섹션 3 -->
 </body>
 </html>
